@@ -1,0 +1,5 @@
+<form action="{% url 'myFormView' %}" method="get">
+	{% csrf_token %}
+	{{form.as_p}}
+	<input type="submit">
+</form>
