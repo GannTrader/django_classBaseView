@@ -1,4 +1,4 @@
-from django.shortcuts import render
+from django.shortcuts import render, get_object_or_404
 from django.views.generic import ListView, DetailView
 from .models import Publisher, Book
 
@@ -11,13 +11,10 @@ class PublisherList(ListView):
     template_name = 'app3/publisher.html'
 
 class PublisherDetail(DetailView):
-	model = Publisher
-	template_name = 'app3/publisher_detail.html'
+	# model = Publisher
 	# queryset = Publisher.objects.all()
+	template_name = 'app3/publisher_detail.html'
 
-	def get_context_data(self, **kwargs):
-        # Call the base implementation first to get a context
-		context = super().get_context_data(**kwargs)
-        # Add in a QuerySet of all the books
-		context['book_list'] = Book.objects.all()
-		return context
+	def get_object(self):
+		id_ = self.kwargs.get("id")
+		return get_object_or_404(Publisher, id = id_)

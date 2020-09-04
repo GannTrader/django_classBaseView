@@ -3,5 +3,5 @@ from .import views
 
 urlpatterns = [
     path('publishers/', views.PublisherList.as_view()),
-    path('PublisherDetail/<int:pk>', views.PublisherDetail.as_view(), name = 'PublisherDetail'),
+    path('PublisherDetail/<int:id>', views.PublisherDetail.as_view(), name = 'PublisherDetail'),
 ]
